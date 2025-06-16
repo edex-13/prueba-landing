@@ -8,656 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
+  <link rel="stylesheet" href="styles/main.css">
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: linear-gradient(180deg, #ff512f, #dd2476);
-      color: #fff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* OPTIMIZACIÓN GPU - Forzar aceleración por hardware */
-    .text-contents,
-    .text-contents > div,
-    .work,
-    .ideas,
-    .services,
-    .service-box,
-    .footer,
-    .s-icon,
-    .work-item,
-    .btn {
-      transform: translate3d(0, 0, 0);
-      will-change: transform, opacity;
-      backface-visibility: hidden;
-      perspective: 1000px;
-    }
-
-    .header {
-      padding-top: 5rem;
-      padding: 2rem;
-      text-align: left;
-      animation: fadeInDown 0.6s ease-out;
-      display: flex;
-      align-items: center;
-    }
-
-    .header section {
-      margin-left: auto;
-    }
-
-    .logo {
-      height: 90px;
-    }
-
-    .hero-container {
-      background: linear-gradient(180deg, #ff512f, #dd2476);
-    }
-
-    .hero {
-      padding: 8rem 2rem;
-      text-align: center;
-      overflow: hidden;
-      min-height: 110vh;
-    }
-
-    .s-icon {
-      opacity: 0.9;
-      position: absolute;
-      top: 0;
-      left: calc(50% - 200px);
-      z-index: 1;
-      height: 300px;
-      /* OPTIMIZACIÓN: Remover transition innecesaria */
-    }
-
-    .s-icon img {
-      margin-top: 30px;
-      height: 80vh;
-      object-fit: cover;
-      opacity: 0.8;
-    }
-
-    .text-content {
-      background-color: transparent;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .text-contents {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      gap: 4rem;
-      height: 600px;
-      opacity: 0;
-      transform: translate3d(0, 80px, 0);
-      /* OPTIMIZACIÓN: Transición más rápida y suavizada */
-      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    }
-
-    .main-text {
-      flex: 2.2;
-    }
-
-    .text-contents.animate {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .text-contents > div:first-child {
-      text-align: left;
-      opacity: 0;
-      transform: translate3d(-100px, 0, 0);
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
-    }
-
-    .text-contents.animate > div:first-child {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .text-contents > div:first-child h2 {
-      font-size: 4.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .text-contents > div:last-child {
-      flex: 1;
-      text-align: left;
-      opacity: 0;
-      transform: translate3d(100px, 0, 0);
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: opacity 0.3s ease-out 0.2s, transform 0.3s ease-out 0.2s;
-    }
-
-    .text-contents.animate > div:last-child {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .text-contents > div:last-child p {
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
-      line-height: 1.7;
-      opacity: 0.9;
-      font-weight: 400;
-    }
-
-    .text-contents > div:last-child p:last-child {
-      margin-bottom: 0;
-    }
-
-    .bold {
-      font-weight: 900;
-    }
-
-    .btn {
-      background: #fff;
-      color: #000;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      font-weight: bold;
-      margin-top: 2rem;
-      cursor: pointer;
-      /* OPTIMIZACIÓN: Transición más rápida y usando transform */
-      transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-      border-radius: 4px;
-    }
-
-    .btn:hover {
-      background: #ddd;
-      transform: translate3d(0, 0, 0) scale(1.05);
-    }
-
-    .work-item:hover {
-      transform: translate3d(0, 0, 0) scale(1.05);
-    }
-
-    .work {
-      background: #161616;
-      padding: 4rem;
-      min-height: 110vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .work-grid {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-columns: 290px 1fr;
-      flex: 1;
-      gap: 2rem;
-      height: 100%;
-    }
-
-    .vertical-title-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: fit-content;
-    }
-
-    .vertical-title {
-      transform: rotate(-90deg) translate3d(0, 0, 0);
-      font-size: 6rem;
-      font-weight: 900;
-      color: #f04;
-      white-space: nowrap;
-      margin: 0;
-    }
-
-    .work-gallery {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-areas:
-        "a b"
-        "a c";
-      grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      align-self: stretch;
-    }
-
-    .work-item {
-      width: 100%;
-      height: 100%;
-      background: #ccc;
-      border-radius: 3px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: transform 0.2s ease-out;
-    }
-
-    .work-item.one {
-      grid-area: a;
-    }
-
-    .work-item.two {
-      grid-area: b;
-    }
-
-    .work-item.three {
-      grid-area: c;
-    }
-
-    .btn {
-      margin: 6rem auto 0;
-      font-size: 2rem;
-      border-radius: 25px;
-      border: #ccc 7px solid;
-      background-color: transparent;
-      color: white;
-    }
-
-    .ideas {
-      background: #161616;
-      padding: 8rem 1rem;
-      text-align: center;
-      min-height: 60vh;
-    }
-
-    .ideas h2 {
-      font-size: 6rem;
-      font-weight: 900;
-    }
-
-    .light {
-      text-shadow: rgb(255 255 255) 3px 0px 0px, rgb(255 255 255) 2.83487px 0.981584px 0px, rgb(255 255 255) 2.35766px 1.85511px 0px, rgb(255 255 255) 1.62091px 2.52441px 0px, rgb(255 255 255) 0.705713px 2.91581px 0px, rgb(255 255 255) -0.287171px 2.98622px 0px, rgb(255 255 255) -1.24844px 2.72789px 0px, rgb(255 255 255) -2.07227px 2.16926px 0px, rgb(255 255 255) -2.66798px 1.37182px 0px, rgb(255 255 255) -2.96998px 0.42336px 0px, rgb(255 255 255) -2.94502px -0.571704px 0px, rgb(255 255 255) -2.59586px -1.50383px 0px, rgb(255 255 255) -1.96093px -2.27041px 0px, rgb(255 255 255) -1.11013px -2.78704px 0px, rgb(255 255 255) -0.137119px -2.99686px 0px, rgb(255 255 255) 0.850987px -2.87677px 0px, rgb(255 255 255) 1.74541px -2.43999px 0px, rgb(255 255 255) 2.44769px -1.73459px 0px, rgb(255 255 255) 2.88051px -0.838247px 0px;
-      color: #161616;
-      font-size: 6rem;
-      font-weight: 400;
-      display: block;
-    }
-
-    .light::selection {
-      color: transparent;
-    }
-
-    .services {
-      display: flex;
-      justify-content: space-around;
-      background: linear-gradient(180deg, #ff512f, #dd2476);
-      padding: 8rem 1rem;
-      flex-wrap: wrap;
-      /* OPTIMIZACIÓN: Remover animación automática */
-    }
-
-    .service-box {
-      background: #fff;
-      color: #161616;
-      padding: 3rem 2rem;
-      width: 300px;
-      margin: 1.5rem;
-      text-align: center;
-      font-weight: bold;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      transform: translate3d(0, 40px, 0);
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-    }
-
-    .services.animate .service-box {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .services.animate .service-box:nth-child(1) {
-      transition-delay: 0.05s;
-    }
-
-    .services.animate .service-box:nth-child(2) {
-      transition-delay: 0.1s;
-    }
-
-    .services.animate .service-box:nth-child(3) {
-      transition-delay: 0.15s;
-    }
-
-    .service-box:hover {
-      /* OPTIMIZACIÓN: Usar translate3d y transición más rápida */
-      transform: translate3d(0, -8px, 0) scale(1.02);
-      transition: transform 0.2s ease-out;
-    }
-
-    .footer {
-      background: #111;
-      padding: 2rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translate3d(0, 60px, 0);
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    }
-
-    .footer.animate {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .footer img {
-      height: 30px;
-    }
-
-    .social-icons img {
-      height: 20px;
-      margin-left: 1rem;
-      /* OPTIMIZACIÓN: Transición más rápida */
-      transition: transform 0.2s ease-out;
-    }
-
-    .social-icons img:hover {
-      transform: translate3d(0, 0, 0) scale(1.2);
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .text-contents {
-        flex-direction: column;
-        gap: 2rem;
-        height: auto;
-        padding: 3rem 1.5rem;
-      }
-
-      .text-contents > div:first-child {
-        text-align: center;
-      }
-
-      .text-contents > div:first-child h2 {
-        font-size: 2.5rem;
-      }
-
-      .text-contents > div:last-child {
-        text-align: center;
-      }
-
-      .main-text {
-        flex: 1;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .text-contents > div:first-child h2 {
-        font-size: 2rem;
-      }
-    }
-
-    /* OPTIMIZACIÓN: Animaciones más rápidas y suaves */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 30px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translate3d(0, -30px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translate3d(-50px, 0, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translate3d(50px, 0, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    .ideas h2,
-    .ideas .light {
-      opacity: 0;
-      display: inline-block;
-    }
-
-    /* OPTIMIZACIÓN: Animaciones más rápidas */
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translate3d(-200px, 0, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    @keyframes slideInRight {
-      from {
-        opacity: 0;
-        transform: translate3d(-200px, 0, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    .ideas.animate h2 {
-      animation: slideInLeft 0.4s ease-out forwards;
-    }
-    .light.animate  {
-      animation: slideInRight 0.4s ease-out forwards;
-    }
-
-    /* Nueva sección de experiencia */
-    .experience {
-      background: linear-gradient(180deg, #ff512f, #dd2476);  
-      padding: 8rem 2rem;
-      text-align: center;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .experience-container {
-      max-width: 1200px;
-      width: 100%;
-      opacity: 0;
-      transform: translate3d(0, 60px, 0);
-      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-    }
-
-    .experience.animate .experience-container {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .experience-title {
-      font-size: 5rem;
-      font-weight: 900;
-      margin-bottom: 3rem;
-      opacity: 0;
-      transform: translate3d(0, 40px, 0);
-      transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
-    }
-
-    .experience.animate .experience-title {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      margin-top: 2rem;
-    }
-
-    .experience-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 16px;
-      padding: 3rem 2rem;
-      text-align: center;
-      opacity: 0;
-      transform: translate3d(0, 60px, 0);
-      transition: opacity 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.2s ease-out;
-    }
-
-    .experience.animate .experience-card:nth-child(1) {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      transition-delay: 0.2s;
-    }
-
-    .experience.animate .experience-card:nth-child(2) {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      transition-delay: 0.3s;
-    }
-
-    .experience.animate .experience-card:nth-child(3) {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
-      transition-delay: 0.4s;
-    }
-
-    .experience-card:hover {
-      transform: translate3d(0, -10px, 0);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .experience-number {
-      font-size: 4rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .experience-label {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-      opacity: 0.9;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .experience-description {
-      font-size: 0.9rem;
-      color: #fff;
-      opacity: 0.7;
-      margin-top: 0.5rem;
-      line-height: 1.4;
-    }
-  </style>
-  <script>
-    // OPTIMIZACIÓN: Throttle del scroll para mejor rendimiento
-    let ticking = false;
-
-    function updateScrollElements() {
-      const sIcon = document.querySelector('.s-icon');
-      const scrollY = window.scrollY;
-      
-      // OPTIMIZACIÓN: Usar transform3d y calcular opacity más eficiente
-      const translateY = scrollY * 0.8;
-      const opacity = Math.max(0, 1 - scrollY / 1000);
-      
-      sIcon.style.transform = `translate3d(0, ${translateY}px, 0)`;
-      sIcon.style.opacity = opacity;
-      
-      if (opacity <= 0) {
-        sIcon.style.pointerEvents = 'none';
-      } else {
-        sIcon.style.pointerEvents = 'auto';
-      }
-      
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollElements);
-        ticking = true;
-      }
-    });
-
-    // OPTIMIZACIÓN: Intersection Observer más eficiente
-    const observerOptions = {
-      threshold: [0.1],
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
-          entry.target.classList.add('animate');
-        } else if (!entry.isIntersecting) {
-          entry.target.classList.remove('animate');
-        }
-      });
-    }, observerOptions);
-
-    // OPTIMIZACIÓN: Usar DOMContentLoaded más eficiente
-    document.addEventListener('DOMContentLoaded', function() {
-      const elementsToObserve = [
-        '.text-contents',
-        '.work',
-        '.ideas',
-        '.experience',
-        '.services',
-        '.footer',
-        '.light'
-      ];
-
-      elementsToObserve.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (element) observer.observe(element);
-      });
-    });
-  </script>
 </head>
 
 <body>
@@ -702,6 +54,9 @@
     </div>
 
     <button class="btn">Contáctanos</button>
+
+
+
   </section>
 
   <!-- Sección de ideas y soluciones -->
@@ -711,50 +66,106 @@
   </section>
 
   <!-- Nueva sección de experiencia -->
-  <section class="experience">
-    <div class="experience-container">
-      <h2 class="experience-title">NUESTRA EXPERIENCIA</h2>
-      <div class="experience-grid">
-        <div class="experience-card">
-          <span class="experience-number">+50</span>
-          <h3 class="experience-label">Proyectos</h3>
-          <p class="experience-description">Completados exitosamente</p>
+
+  <section class="container">
+    <section class="experience">
+      <div class="experience-container">
+        <h2 class="experience-title">NUESTRA EXPERIENCIA</h2>
+        <div class="experience-grid">
+          <div class="experience-card">
+            <span class="experience-number">+50</span>
+            <h3 class="experience-label">Proyectos</h3>
+            <p class="experience-description">Completados exitosamente</p>
+          </div>
+          <div class="experience-card">
+            <span class="experience-number">+5</span>
+            <h3 class="experience-label">Años</h3>
+            <p class="experience-description">De experiencia digital</p>
+          </div>
+          <div class="experience-card">
+            <span class="experience-number">100%</span>
+            <h3 class="experience-label">Satisfacción</h3>
+            <p class="experience-description">Clientes satisfechos</p>
+          </div>
         </div>
-        <div class="experience-card">
-          <span class="experience-number">+5</span>
-          <h3 class="experience-label">Años</h3>
-          <p class="experience-description">De experiencia digital</p>
-        </div>
-        <div class="experience-card">
-          <span class="experience-number">100%</span>
-          <h3 class="experience-label">Satisfacción</h3>
-          <p class="experience-description">Clientes satisfechos</p>
-        </div>
+      </div>
+    </section>
+  </section>
+
+
+  <section class="services">
+    <div class="services-header">
+      <h2>Lo que ofrecemos</h2>
+      <p>Soluciones digitales completas para ayudarte a destacar, crecer y lograr resultados reales en el mundo
+        online.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-box">
+        <h3>Desarrollo Web a Medida</h3>
+        <p>Construimos sitios rápidos, seguros y personalizados, optimizados para escalar con tu empresa.</p>
+      </div>
+      <div class="service-box">
+        <h3>Diseño UX/UI Profesional</h3>
+        <p>Interfaces intuitivas que mejoran la experiencia del usuario y aumentan tu conversión.</p>
+      </div>
+      <div class="service-box">
+        <h3>Marketing Digital Estratégico</h3>
+        <p>Campañas efectivas en redes, Google y más para atraer clientes reales y posicionarte mejor.</p>
+      </div>
+      <div class="service-box">
+        <h3>Consultoría Tecnológica</h3>
+        <p>Te asesoramos para elegir e implementar las herramientas ideales para crecer.</p>
+      </div>
+      <div class="service-box">
+        <h3>Automatización de Procesos</h3>
+        <p>Soluciones inteligentes que optimizan tareas repetitivas para que ganes tiempo y eficiencia.</p>
+      </div>
+      <div class="service-box">
+        <h3>Branding & Identidad Visual</h3>
+        <p>Construimos marcas memorables que conectan con tu audiencia desde el primer segundo.</p>
       </div>
     </div>
   </section>
 
-  <!-- Sección de servicios -->
-  <section class="services">
-    <div class="service-box">
-      <h3>Desarrollo web</h3>
+  <section class="contact-container">
+    <!-- Formulario -->
+    <div class="contact-form">
+      <h2>Contactanos</h2>
+      <form>
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required />
+
+        <label for="email">Correo Electrónico</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required />
+
+        <label for="telefono">Número de Contacto</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000" />
+
+        <label for="mensaje">¿Cuál es tu necesidad?</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos cómo podemos ayudarte" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-    <div class="service-box">
-      <h3>Diseño UX</h3>
-    </div>
-    <div class="service-box">
-      <h3>Marketing digital</h3>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <h3>Contacto</h3>
+      <p>(+57) 320 2860043</p>
+      <p>(+57) 300 2702125</p>
+
+      <div class="socials">
+        <h4>Redes Sociales</h4>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" /></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LinkedIn" /></a>
+      </div>
     </div>
   </section>
-
   <!-- Footer -->
-  <footer class="footer">
-    <img src="assets/logo-sinatra-footer.png" alt="Sinatra Footer Logo">
-    <div class="social-icons">
-      <img src="assets/icon-facebook.png" alt="Facebook">
-      <img src="assets/icon-instagram.png" alt="Instagram">
-    </div>
-  </footer>
+ 
 </body>
+
+<script src="./scripts/main.js"></script>
 
 </html>
