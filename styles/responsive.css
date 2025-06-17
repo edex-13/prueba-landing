@@ -162,7 +162,7 @@
    }
  }
 
- /* Para móviles muy pequeños */
+ /* Para móviles muy pequeños
  @media (max-width: 400px) {
    .light {
      text-shadow:
@@ -179,4 +179,4 @@
      line-height: 1.6;
      letter-spacing: 0.03em;
    }
- }
+ } */
