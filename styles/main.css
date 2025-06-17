@@ -5,8 +5,15 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+.wrapper{
+    max-inline-size: 1158px;
+    padding-inline-end: 16px;
+    padding-inline-start: 16px;
+    margin: auto;
+}
 html {
-  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* scroll-behavior: smooth; */
 }
 
 body {
@@ -170,14 +177,18 @@ body {
   font-weight: bold;
   margin-top: 2rem;
   cursor: pointer;
-  /* OPTIMIZACIÓN: Transición más rápida y usando transform */
-  transition: transform 0.2s ease-out, background-color 0.2s ease-out;
-  border-radius: 4px;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-align: center;
 }
 
 .btn:hover {
-  background: #ddd;
-  transform: translate3d(0, 0, 0) scale(1.05);
+  background-color: #f0f0f0;
+  color: #161616;
+  transform: scale(1.05); /* Ahora sí se nota */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .work-item:hover {
@@ -185,6 +196,7 @@ body {
 }
 
 .work {
+  margin-top: 4rem;
   background: #161616;
   padding: 4rem;
   min-height: 110vh;
@@ -291,7 +303,7 @@ body {
 }
 
 .services {
-  padding: 6rem 2rem;
+  padding: 3rem 0px;
   background-color: #161616;
   color: white;
 }
@@ -335,7 +347,9 @@ body {
   overflow: hidden;
 }
 
-.service-box::before {
+
+
+/* .service-box::before {
   content: "";
   position: absolute;
   top: -30%;
@@ -345,7 +359,7 @@ body {
   background: radial-gradient(circle at center, rgba(255, 82, 47, 0.05), transparent 70%);
   z-index: 0;
   transition: opacity 0.3s ease;
-}
+} */
 
 .service-box:hover {
   transform: translateY(-8px) scale(1.015);
@@ -394,12 +408,14 @@ body {
 }
 
 .footer {
+  padding: 1rem 0px;
+  padding-top: 2rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px;
   border-top: 3px solid rgba(255, 255, 255, 0.8);
-  padding-top: 30px;
   color: rgba(255, 255, 255, 0.8);
   /* transform: translate3d(0, 60px, 0); */
   /* OPTIMIZACIÓN: Transición más rápida */
@@ -427,7 +443,7 @@ body {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (max-width: 954px) {
   .text-contents {
     flex-direction: column;
     gap: 2rem;
@@ -443,9 +459,7 @@ body {
     font-size: 2.5rem;
   }
 
-  .text-contents>div:last-child {
-    text-align: center;
-  }
+
 
   .main-text {
     flex: 1;
@@ -663,7 +677,7 @@ body {
 .contact-section {
       max-width: 1200px;
       margin: auto;
-      padding: 60px 20px;
+      padding: 60px 0px;
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;

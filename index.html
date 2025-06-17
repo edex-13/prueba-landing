@@ -16,6 +16,7 @@
 <body>
   <!-- Header -->
   <header class="header">
+
     <img src="assets/images/Logo_blanco.png" alt="Logo Sinatra" class="logo">
     <section>
       <img src="assets/images/menu.svg" alt="">
@@ -54,7 +55,9 @@
       </div>
     </div>
 
-    <button class="btn">Contáctanos</button>
+    <button class="btn" onclick="document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });">
+      Contáctanos
+    </button>
 
 
 
@@ -93,80 +96,83 @@
     </section>
   </section>
 
+  <div class="wrapper">
 
-  <section class="services">
-    <div class="services-header">
-      <h2>Lo que ofrecemos</h2>
-      <p>Soluciones digitales completas para ayudarte a destacar, crecer y lograr resultados reales en el mundo
-        online.</p>
-    </div>
-
-    <div class="services-grid">
-      <div class="service-box">
-        <h3>Desarrollo Web a Medida</h3>
-        <p>Construimos sitios rápidos, seguros y personalizados, optimizados para escalar con tu empresa.</p>
+    <section class="services">
+      <div class="services-header">
+        <h2>Lo que ofrecemos</h2>
+        <p>Soluciones digitales completas para ayudarte a destacar, crecer y lograr resultados reales en el mundo
+          online.</p>
       </div>
-      <div class="service-box">
-        <h3>Diseño UX/UI Profesional</h3>
-        <p>Interfaces intuitivas que mejoran la experiencia del usuario y aumentan tu conversión.</p>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Desarrollo Web a Medida</h3>
+          <p>Construimos sitios rápidos, seguros y personalizados, optimizados para escalar con tu empresa.</p>
+        </div>
+        <div class="service-box">
+          <h3>Diseño UX/UI Profesional</h3>
+          <p>Interfaces intuitivas que mejoran la experiencia del usuario y aumentan tu conversión.</p>
+        </div>
+        <div class="service-box">
+          <h3>Marketing Digital Estratégico</h3>
+          <p>Campañas efectivas en redes, Google y más para atraer clientes reales y posicionarte mejor.</p>
+        </div>
+        <div class="service-box">
+          <h3>Consultoría Tecnológica</h3>
+          <p>Te asesoramos para elegir e implementar las herramientas ideales para crecer.</p>
+        </div>
+        <div class="service-box">
+          <h3>Automatización de Procesos</h3>
+          <p>Soluciones inteligentes que optimizan tareas repetitivas para que ganes tiempo y eficiencia.</p>
+        </div>
+        <div class="service-box">
+          <h3>Branding & Identidad Visual</h3>
+          <p>Construimos marcas memorables que conectan con tu audiencia desde el primer segundo.</p>
+        </div>
       </div>
-      <div class="service-box">
-        <h3>Marketing Digital Estratégico</h3>
-        <p>Campañas efectivas en redes, Google y más para atraer clientes reales y posicionarte mejor.</p>
+    </section>
+
+    <section class=" contact-section" id="contacto">
+      <div class="contact-box">
+        <h2>Contáctanos</h2>
+        <form class="contact-form">
+          <label for="nombre">Nombre Completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+          <label for="email">Correo Electrónico</label>
+          <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+
+          <label for="telefono">Número de Contacto</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+57 3000000000">
+
+          <label for="mensaje">¿Cuál es tu necesidad?</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más" required></textarea>
+
+          <button type="submit">Enviar</button>
+        </form>
       </div>
-      <div class="service-box">
-        <h3>Consultoría Tecnológica</h3>
-        <p>Te asesoramos para elegir e implementar las herramientas ideales para crecer.</p>
+
+      <div class="contact-info">
+        <h3>Contacto</h3>
+        <p>(+57) 320 2860043</p>
+        <p>(+57) 300 2702125</p>
+
+        <div class="socials">
+          <h4>Redes Sociales</h4>
+          <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="assets/images/linkedin.png" alt="LinkedIn"></a>
+        </div>
       </div>
-      <div class="service-box">
-        <h3>Automatización de Procesos</h3>
-        <p>Soluciones inteligentes que optimizan tareas repetitivas para que ganes tiempo y eficiencia.</p>
-      </div>
-      <div class="service-box">
-        <h3>Branding & Identidad Visual</h3>
-        <p>Construimos marcas memorables que conectan con tu audiencia desde el primer segundo.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+    <!-- Footer -->
 
-  <section class=" contact-section">
-    <div class="contact-box">
-      <h2>Contáctanos</h2>
-      <form class="contact-form">
-        <label for="nombre">Nombre Completo</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+    <footer class="footer">
+      <img src="./assets/images/Logo_blanco.png" alt="Logo">
+      <p>&copy; 2025 InfinityPlatform. Todos los derechos reservados.</p>
 
-        <label for="email">Correo Electrónico</label>
-        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-
-        <label for="telefono">Número de Contacto</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="+57 3000000000">
-
-        <label for="mensaje">¿Cuál es tu necesidad?</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos más" required></textarea>
-
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-
-    <div class="contact-info">
-      <h3>Contacto</h3>
-      <p>(+57) 320 2860043</p>
-      <p>(+57) 300 2702125</p>
-
-      <div class="socials">
-        <h4>Redes Sociales</h4>
-        <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
-        <a href="#"><img src="assets/images/linkedin.png" alt="LinkedIn"></a>
-      </div>
-    </div>
-  </section>
-  <!-- Footer -->
-  <footer class="footer">
-    <img src="./assets/images/Logo_blanco.png" alt="Logo">
-    <p>&copy; 2025 InfinityPlatform. Todos los derechos reservados.</p>
-
-  </footer>
+    </footer>
+  </div>
 
 </body>
 
