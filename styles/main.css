@@ -393,18 +393,18 @@ body {
   transition: transform 0.2s ease-out;
 }
 
-/* .footer {
-  background: #161616;
-  padding: 2rem 1rem;
+.footer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  opacity: 0;
-  transform: translate3d(0, 60px, 0);
+  justify-content: space-between;
+  margin: 10px;
+  border-top: 3px solid rgba(255, 255, 255, 0.8);
+  padding-top: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  /* transform: translate3d(0, 60px, 0); */
   /* OPTIMIZACIÓN: Transición más rápida */
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-} */
+  /* transition: opacity 0.4s ease-out, transform 0.4s ease-out; */
+}
 
 .footer.animate {
   opacity: 1;
@@ -412,7 +412,7 @@ body {
 }
 
 .footer img {
-  height: 30px;
+  height: 60px;
 }
 
 .social-icons img {
@@ -612,20 +612,20 @@ body {
 .experience.animate .experience-card:nth-child(2) {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition-delay: 0.3s;
+  transition-delay: 0.2s;
 }
 
 .experience.animate .experience-card:nth-child(3) {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 .experience-card:hover {
   /* border: #000; */
   border: 1px solid rgba(236, 230, 230, 0.7);
 
-  transform: translate3d(0, -10px, 0);
+  transform: translate3d(0, -13px, 0);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -740,6 +740,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: start;
       padding: 20px;
     }
 

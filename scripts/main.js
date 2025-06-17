@@ -84,8 +84,9 @@ const mainObserver = new IntersectionObserver(function (entries) {
       }
       
     } else {
-      // Elemento sale - quitar animación
+      // Elemento sale - resetear completamente
       target.classList.remove('animate');
+      resetSectionAnimations(target);
     }
   });
 }, observerOptions);
@@ -95,6 +96,11 @@ function animateServiceBoxes(servicesSection) {
   const serviceBoxes = servicesSection.querySelectorAll('.service-box');
   
   serviceBoxes.forEach((box, index) => {
+    // Resetear primero
+    box.style.opacity = '0';
+    box.style.transform = 'translate3d(0, 30px, 0)';
+    box.classList.remove('animate-in');
+    
     setTimeout(() => {
       box.style.opacity = '1';
       box.style.transform = 'translate3d(0, 0, 0)';
@@ -107,6 +113,11 @@ function animateExperienceCards(experienceSection) {
   const cards = experienceSection.querySelectorAll('.experience-card');
   
   cards.forEach((card, index) => {
+    // Resetear primero
+    card.style.opacity = '0';
+    card.style.transform = 'translate3d(0, 40px, 0)';
+    card.classList.remove('pulse-animation');
+    
     setTimeout(() => {
       card.style.opacity = '1';
       card.style.transform = 'translate3d(0, 0, 0)';
@@ -119,6 +130,11 @@ function animateWorkItems(workSection) {
   const workItems = workSection.querySelectorAll('.work-item');
   
   workItems.forEach((item, index) => {
+    // Resetear primero
+    item.style.opacity = '0';
+    item.style.transform = 'translate3d(0, 30px, 0) scale(0.9)';
+    item.classList.remove('work-animate');
+    
     setTimeout(() => {
       item.style.opacity = '1';
       item.style.transform = 'translate3d(0, 0, 0) scale(1)';
@@ -132,6 +148,10 @@ function animateContactSection(contactSection) {
   const contactInfo = contactSection.querySelector('.contact-info');
   
   if (contactBox) {
+    // Resetear primero
+    contactBox.style.opacity = '0';
+    contactBox.style.transform = 'translate3d(0, 30px, 0)';
+    
     setTimeout(() => {
       contactBox.style.opacity = '1';
       contactBox.style.transform = 'translate3d(0, 0, 0)';
@@ -139,10 +159,55 @@ function animateContactSection(contactSection) {
   }
   
   if (contactInfo) {
+    // Resetear primero
+    contactInfo.style.opacity = '0';
+    contactInfo.style.transform = 'translate3d(0, 30px, 0)';
+    
     setTimeout(() => {
       contactInfo.style.opacity = '1';
       contactInfo.style.transform = 'translate3d(0, 0, 0)';
     }, 400);
+  }
+}
+
+// FUNCIÓN PARA RESETEAR ANIMACIONES DE SECCIONES
+function resetSectionAnimations(section) {
+  // Resetear service boxes
+  const serviceBoxes = section.querySelectorAll('.service-box');
+  serviceBoxes.forEach(box => {
+    box.style.opacity = '0';
+    box.style.transform = 'translate3d(0, 30px, 0)';
+    box.classList.remove('animate-in');
+  });
+
+  // Resetear experience cards
+  const experienceCards = section.querySelectorAll('.experience-card');
+  experienceCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translate3d(0, 40px, 0)';
+    card.classList.remove('pulse-animation');
+  });
+
+  // Resetear work items
+  const workItems = section.querySelectorAll('.work-item');
+  workItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translate3d(0, 30px, 0) scale(0.9)';
+    item.classList.remove('work-animate');
+  });
+
+  // Resetear contact section
+  const contactBox = section.querySelector('.contact-box');
+  const contactInfo = section.querySelector('.contact-info');
+  
+  if (contactBox) {
+    contactBox.style.opacity = '0';
+    contactBox.style.transform = 'translate3d(0, 30px, 0)';
+  }
+  
+  if (contactInfo) {
+    contactInfo.style.opacity = '0';
+    contactInfo.style.transform = 'translate3d(0, 30px, 0)';
   }
 }
 
@@ -156,6 +221,14 @@ function animateIdeasSection() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Resetear primero
+          h2.style.opacity = '0';
+          h2.style.transform = 'translate3d(0, 30px, 0)';
+          lightSpan.style.opacity = '0';
+          lightSpan.style.transform = 'translate3d(0, 30px, 0)';
+          h2.classList.remove('animate');
+          lightSpan.classList.remove('animate');
+          
           setTimeout(() => {
             h2.style.opacity = '1';
             h2.style.transform = 'translate3d(0, 0, 0)';
@@ -169,6 +242,10 @@ function animateIdeasSection() {
           }, 300);
         } else {
           // Resetear cuando sale
+          h2.style.opacity = '0';
+          h2.style.transform = 'translate3d(0, 30px, 0)';
+          lightSpan.style.opacity = '0';
+          lightSpan.style.transform = 'translate3d(0, 30px, 0)';
           h2.classList.remove('animate');
           lightSpan.classList.remove('animate');
         }
