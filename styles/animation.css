@@ -325,35 +325,8 @@ html {
   height: 200px;
 }
 
-/* ANIMACIONES RESPONSIVAS */
-@media (max-width: 768px) {
 
-  .service-box,
-  .experience-card,
-  .work-item {
-    transform: translate3d(0, 30px, 0);
-  }
 
-  .ideas h2 {
-    font-size: 3rem;
-  }
-
-  .light {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .ideas h2,
-  .light {
-    font-size: 2rem;
-  }
-
-  .experience-title {
-    font-size: 3rem;
-  }
-}
 
 .optimize-animation {
   will-change: transform, opacity;

@@ -32,7 +32,7 @@
    }
 
    .text-contents>div:first-child h2 {
-     font-size: 2.5rem;
+     font-size: 2rem;
    }
 
 
@@ -72,9 +72,55 @@
 
  }
 
+ @media (max-width: 768px) {
+
+   .service-box,
+   .experience-card,
+   .work-item {
+     transform: translate3d(0, 30px, 0);
+   }
+
+   .ideas h2 {
+     font-size: 3rem;
+   }
+
+   .light {
+     font-size: 3rem;
+   }
+ }
+
+
  @media (max-width: 520px) {
    .text-contents>div:first-child h2 {
      font-size: 2rem;
+   }
+
+   .experience {
+     padding: 3rem 1rem;
+
+   }
+
+   .services-header h2 {
+     font-size: 3rem;
+   }
+
+   .services-header p {
+
+     font-size: 1rem;
+
+   }
+
+
+   .work-gallery {
+     grid-template-areas:
+       "a a"
+       "b c";
+   }
+
+   .ideas {
+     /* height: 40vh; */
+     padding: 6rem 1rem;
+
    }
 
    .contact-box {
@@ -94,14 +140,43 @@
    }
 
    .s-icon img {
-     height: 70vh;
+     height: 55vh;
    }
 
    .logo {
-    height: 60px;
+     height: 60px;
    }
 
-   .header{
-    padding: 1rem;
+   .header {
+     padding: 1rem;
+   }
+
+   .footer {
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 20px;
+     text-align: center;
+     font-size: 13px;
+
+   }
+ }
+
+ /* Para móviles muy pequeños */
+ @media (max-width: 400px) {
+   .light {
+     text-shadow:
+       rgb(255 255 255) 0.5px 0px 0px,
+       rgb(255 255 255) 0.47px 0.16px 0px,
+       rgb(255 255 255) 0.39px 0.31px 0px,
+       rgb(255 255 255) 0.27px 0.42px 0px,
+       rgb(255 255 255) 0.12px 0.48px 0px,
+       rgb(255 255 255) -0.05px 0.50px 0px,
+       rgb(255 255 255) -0.21px 0.45px 0px,
+       rgb(255 255 255) -0.34px 0.36px 0px,
+       rgb(255 255 255) -0.44px 0.23px 0px,
+       rgb(255 255 255) -0.49px 0.07px 0px;
+     line-height: 1.6;
+     letter-spacing: 0.03em;
    }
  }
