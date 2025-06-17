@@ -5,15 +5,19 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+
 .wrapper{
     max-inline-size: 1158px;
     padding-inline-end: 16px;
     padding-inline-start: 16px;
     margin: auto;
 }
-html {
+
+html, body {
   overflow-x: hidden;
-  /* scroll-behavior: smooth; */
+}
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -72,13 +76,17 @@ body {
 }
 
 .s-icon {
-  opacity: 0.9;
   position: absolute;
   top: 0;
-  left: calc(50% - 200px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  height: auto;
   z-index: 1;
-  height: 300px;
-  /* OPTIMIZACIÓN: Remover transition innecesaria */
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
 }
 
 .s-icon img {
@@ -123,6 +131,7 @@ body {
   text-align: left;
   opacity: 0;
   transform: translate3d(-100px, 0, 0);
+  
   /* OPTIMIZACIÓN: Transición más rápida */
   transition: opacity 0.3s ease-out 0.1s, transform 0.3s ease-out 0.1s;
 }
@@ -442,35 +451,7 @@ body {
   transform: translate3d(0, 0, 0) scale(1.2);
 }
 
-/* Responsive design */
-@media (max-width: 954px) {
-  .text-contents {
-    flex-direction: column;
-    gap: 2rem;
-    height: auto;
-    padding: 3rem 1.5rem;
-  }
 
-  .text-contents>div:first-child {
-    text-align: center;
-  }
-
-  .text-contents>div:first-child h2 {
-    font-size: 2.5rem;
-  }
-
-
-
-  .main-text {
-    flex: 1;
-  }
-}
-
-@media (max-width: 480px) {
-  .text-contents>div:first-child h2 {
-    font-size: 2rem;
-  }
-}
 
 /* OPTIMIZACIÓN: Animaciones más rápidas y suaves */
 @keyframes fadeInUp {
@@ -790,14 +771,4 @@ body {
       vertical-align: middle;
     }
 
-    @media (max-width: 768px) {
-      .contact-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .contact-info {
-        align-items: center;
-        text-align: center;
-      }
-    }
+   
