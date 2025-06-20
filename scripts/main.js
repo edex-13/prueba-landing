@@ -392,16 +392,25 @@ function resetAnimations() {
     element.classList.remove('animate', 'animate-in', 'pulse-animation', 'work-animate');
   });
 }
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.querySelector(".menu-toggle");
   const fullscreenMenu = document.getElementById("fullscreenMenu");
 
   toggleBtn.addEventListener("click", () => {
     const isOpen = toggleBtn.classList.toggle("open");
-    fullscreenMenu.style.display = isOpen ? "flex" : "none";
+
+    if (isOpen) {
+      fullscreenMenu.style.display = "flex";
+    } else {
+      fullscreenMenu.style.display = "none";
+    }
+
     toggleBtn.setAttribute("aria-expanded", isOpen);
   });
 
+  // Cierra el menú al hacer clic en un enlace
   document.querySelectorAll("#fullscreenMenu a").forEach(link => {
     link.addEventListener("click", () => {
       fullscreenMenu.style.display = "none";
