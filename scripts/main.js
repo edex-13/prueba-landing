@@ -392,20 +392,21 @@ function resetAnimations() {
     element.classList.remove('animate', 'animate-in', 'pulse-animation', 'work-animate');
   });
 }
-
 document.addEventListener("DOMContentLoaded", function () {
-  const menuIcon = document.querySelector(".header section img"); // el icono de menú
+  const toggleBtn = document.querySelector(".menu-toggle");
   const fullscreenMenu = document.getElementById("fullscreenMenu");
 
-  menuIcon.addEventListener("click", () => {
-    const isVisible = fullscreenMenu.style.display === "flex";
-    fullscreenMenu.style.display = isVisible ? "none" : "flex";
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = toggleBtn.classList.toggle("open");
+    fullscreenMenu.style.display = isOpen ? "flex" : "none";
+    toggleBtn.setAttribute("aria-expanded", isOpen);
   });
 
-  // Cerrar menú al hacer clic en un enlace
   document.querySelectorAll("#fullscreenMenu a").forEach(link => {
     link.addEventListener("click", () => {
       fullscreenMenu.style.display = "none";
+      toggleBtn.classList.remove("open");
+      toggleBtn.setAttribute("aria-expanded", "false");
     });
   });
 });
