@@ -117,6 +117,12 @@ body {
   /* OPTIMIZACIÓN: Transición más rápida y suavizada */
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
+.text-contents-container{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  
+}
 
 .main-text {
   flex: 2.2;
