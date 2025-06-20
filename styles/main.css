@@ -27,6 +27,64 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Menú desplegable a pantalla completa */
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.fullscreen-menu li {
+  margin: 20px 0;
+  font-size: 2rem;
+  position: relative;
+}
+
+.fullscreen-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.3s;
+}
+
+.fullscreen-menu a:hover {
+  color: #ff6347; /* Color al hacer hover */
+}
+
+.fullscreen-menu a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #ff6347;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+.fullscreen-menu a:hover::after {
+  width: 100%;
+}
+
 /* OPTIMIZACIÓN GPU - Forzar aceleración por hardware */
 .text-contents,
 .text-contents>div,

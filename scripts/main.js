@@ -392,3 +392,20 @@ function resetAnimations() {
     element.classList.remove('animate', 'animate-in', 'pulse-animation', 'work-animate');
   });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const menuIcon = document.querySelector(".header section img"); // el icono de menú
+  const fullscreenMenu = document.getElementById("fullscreenMenu");
+
+  menuIcon.addEventListener("click", () => {
+    const isVisible = fullscreenMenu.style.display === "flex";
+    fullscreenMenu.style.display = isVisible ? "none" : "flex";
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll("#fullscreenMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      fullscreenMenu.style.display = "none";
+    });
+  });
+});
