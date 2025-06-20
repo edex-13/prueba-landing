@@ -280,7 +280,7 @@ body {
 }
 
 .btn {
-  margin: 6rem auto 0;
+  margin: 6rem auto ;
   font-size: 2rem;
   border-radius: 25px;
   border: #ccc 7px solid;
