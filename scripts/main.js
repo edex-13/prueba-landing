@@ -393,29 +393,30 @@ function resetAnimations() {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  const toggleBtn = document.querySelector(".menu-toggle");
+  const menuBtn = document.querySelector(".menu-toggle.outside-menu");
+  const closeBtn = document.querySelector(".menu-toggle.inside-menu");
   const fullscreenMenu = document.getElementById("fullscreenMenu");
+  const body = document.body;
 
-  toggleBtn.addEventListener("click", () => {
-    const isOpen = toggleBtn.classList.toggle("open");
+  function openMenu() {
+    fullscreenMenu.classList.add("show");
+    closeBtn.classList.add("open");
+    body.classList.add("menu-open");
+    menuBtn.setAttribute("aria-expanded", "true");
+  }
 
-    if (isOpen) {
-      fullscreenMenu.style.display = "flex";
-    } else {
-      fullscreenMenu.style.display = "none";
-    }
+  function closeMenu() {
+    fullscreenMenu.classList.remove("show");
+    closeBtn.classList.remove("open");
+    body.classList.remove("menu-open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  }
 
-    toggleBtn.setAttribute("aria-expanded", isOpen);
-  });
+  menuBtn.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
 
-  // Cierra el menú al hacer clic en un enlace
   document.querySelectorAll("#fullscreenMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      fullscreenMenu.style.display = "none";
-      toggleBtn.classList.remove("open");
-      toggleBtn.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", closeMenu);
   });
 });

@@ -19,16 +19,24 @@
 <header class="header">
   <img src="assets/images/Logo_blanco.png" alt="Logo Sinatra" class="logo">
 
-  <!-- Botón hamburguesa -->
-  <button class="menu-toggle" aria-label="Menú" aria-expanded="false">
+  <!-- Botón hamburguesa fuera del menú -->
+  <button class="menu-toggle outside-menu" aria-label="Menú" aria-expanded="false">
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
   </button>
 </header>
 
+
 <!-- Menú fullscreen oculto -->
 <nav class="fullscreen-menu" id="fullscreenMenu">
+  <!-- Botón Cerrar dentro del menú -->
+  <button class="menu-toggle inside-menu" aria-label="Cerrar menú" aria-expanded="true">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </button>
+
   <ul>
     <li><a href="#hero">Inicio</a></li>
     <li><a href="#work">Proyectos</a></li>
